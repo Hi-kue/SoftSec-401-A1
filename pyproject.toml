@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "sofsec-401-a1"
+version = "0.1.0"
+description = ""
+authors = ["Muhammad Bilal Khan <lofi.audit@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+rich = "^13.8.0"
+flask = "^3.0.3"
+python-dotenv = "^1.0.1"
+openai = "^1.43.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
