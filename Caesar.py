@@ -6,19 +6,29 @@ list = [
 
 
 def shift(text, displacement):
+    text_list = []
+    position = 0
     for i in text:
+        text_list.append(i)
+    for i in text_list:
         shift_amount = (list.index(i) + displacement) % len(list)
-        text = text.replace(i, list[shift_amount])
-    return text
+        text_list[position] = list[shift_amount]
+        position += 1
+    return "".join(text_list)
 
 
 def unshift(text, displacement):
+    text_list = []
+    position = 0
     for i in text:
+        text_list.append(i)
+    for i in text_list:
         shift_amount = (list.index(i) - displacement) % len(list)
-        text = text.replace(i, list[shift_amount])
-    return text
+        text_list[position] = list[shift_amount]
+        position += 1
+    return "".join(text_list)
 
 
 num = 31
-print(shift("wxyz", num))
-print(unshift(shift("wxyz", num), num))
+print(shift("johnjon", num))
+print(unshift(shift("johnjon", num), num))
