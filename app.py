@@ -43,7 +43,7 @@ def encrypt():
             error={"message": "Bad Request was Made"}
         ).to_dict())
 
-    encrypted_content = encrypt_content(content, shift)
+    encrypted_content = encrypt_content(str(content), int(shift))
 
     response = set_custom_response(
         200,
@@ -70,7 +70,7 @@ def decrypt():
             error={"message": "Bad Request was Made"}
         ).to_dict())
 
-    decrypted_content = decrypt_content(content, shift)
+    decrypted_content = decrypt_content(str(content), int(shift))
 
     response = set_custom_response(
         200,

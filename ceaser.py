@@ -1,27 +1,15 @@
 from config.log_config import logging as log
 
-
-lower_list = [
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
-    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x",
-    "y", "z"
-]
-
-upper_list = [
-    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
-    "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
-    "W", "X", "Y", "Z"
-]
+lower_list = list("abcdefghijklmnopqrstuvwxyz")
+upper_list = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 
 def encrypt_content(text: str, shift: int) -> str:
-    text_list = []
+    text_list = list(text)
     position = 0
 
-    text_list.append([ch for ch in text])
-
     for i in text_list:
-        if i.isalpha():
+        if isinstance(i, str) and i.isalpha():
             if i.isupper():
                 shift_amount = (upper_list.index(
                     i) + shift) % len(upper_list)
@@ -37,13 +25,11 @@ def encrypt_content(text: str, shift: int) -> str:
 
 
 def decrypt_content(text: str, shift: int) -> str:
-    text_list = []
+    text_list = list(text)
     position = 0
 
-    text_list.append([ch for ch in text])
-
     for i in text_list:
-        if i.isalpha():
+        if isinstance(i, str) and i.isalpha():
             if i.isupper():
                 shift_amount = (upper_list.index(i) - shift) % len(upper_list)
                 text_list[position] = upper_list[shift_amount]
