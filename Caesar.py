@@ -19,7 +19,7 @@ def shift(text, displacement):
     for i in text:
         text_list.append(i)
     for i in text_list:
-        if i != " ":
+        if i.isalpha():
             if i.isupper():
                 shift_amount = (upper_list.index(
                     i) + displacement) % len(upper_list)
@@ -38,7 +38,7 @@ def unshift(text, displacement):
     for i in text:
         text_list.append(i)
     for i in text_list:
-        if i != " ":
+        if i.isalpha():
             if i.isupper():
                 shift_amount = (upper_list.index(
                     i) - displacement) % len(upper_list)
@@ -52,6 +52,6 @@ def unshift(text, displacement):
 
 
 num = 1
-text = "aBc DeF"
+text = "aBc!! DeF??"
 print(shift(text, num))
 print(unshift(shift(text, num), num))
