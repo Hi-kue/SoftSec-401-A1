@@ -11,8 +11,9 @@ def shift(text, displacement):
     for i in text:
         text_list.append(i)
     for i in text_list:
-        shift_amount = (list.index(i) + displacement) % len(list)
-        text_list[position] = list[shift_amount]
+        if i != " ":
+            shift_amount = (list.index(i) + displacement) % len(list)
+            text_list[position] = list[shift_amount]
         position += 1
     return "".join(text_list)
 
@@ -23,12 +24,14 @@ def unshift(text, displacement):
     for i in text:
         text_list.append(i)
     for i in text_list:
-        shift_amount = (list.index(i) - displacement) % len(list)
-        text_list[position] = list[shift_amount]
+        if i != " ":
+            shift_amount = (list.index(i) - displacement) % len(list)
+            text_list[position] = list[shift_amount]
         position += 1
     return "".join(text_list)
 
 
 num = 31
-print(shift("johnjon", num))
-print(unshift(shift("johnjon", num), num))
+text = "jon john"
+print(shift(text, num))
+print(unshift(shift(text, num), num))
