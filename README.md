@@ -14,6 +14,12 @@ The goal of this repository is to meet the requirements of the first assignment,
 encryption and decryption using the Ceaser Cipher algorithm, and to understand the important of security by
 implementing a brute force attack on the Ceaser Cipher algorithm.
 
+<div align="center">
+    <video width="850" height="500" controls autoplay>
+        <source src="rdocs/videos/softsec-401-a1-video.mp4" type="video/mp4">
+    </video>
+</div>
+
 ## Installation & Usage
 
 To use this repo, simply clone it and copy the files you need into your own projects. I usually put them in a folder called `docs/` in the root of the repo, but you can put them wherever you see best fit. 

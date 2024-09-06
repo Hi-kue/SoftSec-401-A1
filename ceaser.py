@@ -38,7 +38,7 @@ def decrypt_content(text: str, shift: int) -> str:
                 text_list[position] = lower_list[shift_amount]
         position += 1
 
-    log.info(f"decryption successful! decrypted content: {text_list}")
+    log.info(f"decryption running... decrypted content: {text_list}")
     return "".join(text_list)
 
 
