@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from ceaser import encrypt_content, decrypt_content, hack_ceaser_cipher
 from config.response import HTTPResponse, set_custom_response
+from config.ai_config import client, send_request
 from dotenv import load_dotenv
 
 import os
@@ -106,6 +107,38 @@ def hack_encryption():
         data={
             "content": decrypted_content,
             "valid_shift": shift,
+            "expected_content": expected_content
+        },
+        error=None
+    )
+
+    return jsonify(response.to_dict())
+
+
+@app.route("/api/v1/decrypt_ai", methods=["POST"])
+def decrypt_with_ai():
+    encrypted_content = request.args.get("encrypted_content")
+    expected_content = request.args.get("expected_content")
+
+    if not encrypted_content and not expected_content:
+        return jsonify(HTTPResponse(
+            400,
+            "Bad Request",
+            data=None,
+            error={"message": "Bad Request was Made"}
+        ).to_dict())
+
+    prompt = (f"Decrypt the following content: {encrypted_content}, "
+              "determine the shift and provide the decrypted content."
+              f"The expected content is: {expected_content}.")
+
+    ai_response = send_request(role="user", query=prompt)
+
+    response = set_custom_response(
+        200,
+        "Decryption Successful",
+        data={
+            "content": ai_response,
             "expected_content": expected_content
         },
         error=None
