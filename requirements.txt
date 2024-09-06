@@ -27,3 +27,6 @@ shellingham==1.5.4
 tomli==2.0.1
 tomlkit==0.12.5
 trove-classifiers==2024.5.22
+
+Flask~=3.0.3
+rich~=13.8.0
