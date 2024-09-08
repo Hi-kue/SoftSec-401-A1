@@ -45,6 +45,9 @@ def decrypt_content(text: str, shift: int) -> str:
 def hack_ceaser_cipher(text: str, expected: str) -> tuple:
     tries = 0
 
+    if text == expected:
+        return 0, text
+
     for i in range(1, 26):
         potential_decrypted_text = decrypt_content(text, i)
 
@@ -55,3 +58,4 @@ def hack_ceaser_cipher(text: str, expected: str) -> tuple:
 
         else:
             tries += 1
+    return 0, "Failed to decrypt"

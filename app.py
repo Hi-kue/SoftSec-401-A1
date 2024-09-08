@@ -101,16 +101,23 @@ def hack_encryption():
 
     shift, decrypted_content = hack_ceaser_cipher(text=ciphertext, expected=expected_content)
 
-    response = set_custom_response(
-        200,
-        "Hack Successful",
-        data={
-            "content": decrypted_content,
-            "valid_shift": shift,
-            "expected_content": expected_content
-        },
-        error=None
-    )
+    if decrypted_content == expected_content:
+        response = set_custom_response(
+            200,
+            "Hack Successful",
+            data={
+                "content": decrypted_content,
+                "valid_shift": shift,
+                "expected_content": expected_content
+            },
+            error=None
+        )
+    else:
+        response = set_custom_response(
+            400,
+            "Hack Failed!, Double-check the expected_content parameter.",
+            error="HACK FAILED!"
+        )
 
     return jsonify(response.to_dict())
 
